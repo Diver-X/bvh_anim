@@ -695,6 +695,12 @@ impl Bvh {
     pub fn frame_cursor(&mut self) -> FrameCursor<'_> {
         From::from(self)
     }
+
+    /// Add a new frame to the `frames` of the `Bvh`.
+    #[inline]
+    pub fn push_frame(&mut self, frame: &[f32]) {
+        self.motion_values.extend(frame);
+    }
 }
 
 impl Default for Bvh {
